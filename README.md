@@ -1,83 +1,85 @@
-# FastAPI
-### Quem é o FastAPi?
-Framework FastAPI, alta performance, fácil de aprender, fácil de codar, pronto para produção.
-FastAPI é um moderno e rápido (alta performance) framework web para construção de APIs com Python 3.6 ou superior, baseado nos type hints padrões do Python.
+🏋️ Workout API
 
-### Async
-Código assíncrono apenas significa que a linguagem tem um jeito de dizer para o computador / programa que em certo ponto, ele terá que esperar por algo para finalizar em outro lugar
+API para gerenciamento de atletas, categorias e centros de treinamento, desenvolvida como parte do bootcamp da DIO.
 
-# Projeto
-## WorkoutAPI
+🚀 Tecnologias
 
-Esta é uma API de competição de crossfit chamada WorkoutAPI (isso mesmo rs, eu acabei unificando duas coisas que gosto: codar e treinar). É uma API pequena, devido a ser um projeto mais hands-on e simplificado nós desenvolveremos uma API de poucas tabelas, mas com o necessário para você aprender como utilizar o FastAPI.
+Python 3.10+
 
-## Modelagem de entidade e relacionamento - MER
-![MER](/mer.jpg "Modelagem de entidade e relacionamento")
+FastAPI
 
-## Stack da API
+Uvicorn
 
-A API foi desenvolvida utilizando o `fastapi` (async), junto das seguintes libs: `alembic`, `SQLAlchemy`, `pydantic`. Para salvar os dados está sendo utilizando o `postgres`, por meio do `docker`.
+SQLAlchemy
 
-## Execução da API
+Alembic
 
-Para executar o projeto, utilizei a [pyenv](https://github.com/pyenv/pyenv), com a versão 3.11.4 do `python` para o ambiente virtual.
+[SQLite] ou [PostgreSQL] (dependendo da configuração)
 
-Caso opte por usar pyenv, após instalar, execute:
 
-```bash
-pyenv virtualenv 3.11.4 workoutapi
-pyenv activate workoutapi
+
+---
+
+📦 Como rodar o projeto
+
+1. Clone o repositório
+
+git clone https://github.com/lucks669/workout_api.git
+cd workout_api
+
+2. Crie e ative um ambiente virtual
+
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
+
+3. Instale as dependências
+
 pip install -r requirements.txt
-```
-Para subir o banco de dados, caso não tenha o [docker-compose](https://docs.docker.com/compose/install/linux/) instalado, faça a instalação e logo em seguida, execute:
 
-```bash
-make run-docker
-```
-Para criar uma migration nova, execute:
+4. Execute as migrações do banco
 
-```bash
-make create-migrations d="nome_da_migration"
-```
+alembic upgrade head
 
-Para criar o banco de dados, execute:
+5. Rode a aplicação
 
-```bash
-make run-migrations
-```
+uvicorn workout_api.main:app --reload
 
-## API
+A API estará disponível em: 👉 http://127.0.0.1:8000/docs
 
-Para subir a API, execute:
-```bash
-make run
-```
-e acesse: http://127.0.0.1:8000/docs
 
-# Desafio Final
-    - adicionar query parameters nos endpoints
-        - atleta
-            - nome
-            - cpf
-    - customizar response de retorno de endpoints
-        - get all
-            - atleta
-                - nome
-                - centro_treinamento
-                - categoria
-    - Manipular exceção de integridade dos dados em cada módulo/tabela
-        - sqlalchemy.exc.IntegrityError e devolver a seguinte mensagem: “Já existe um atleta cadastrado com o cpf: x”
-        - status_code: 303
-    - Adicionar paginação utilizando a lib: fastapi-pagination
-        - limit e offset
-# Referências
+---
 
-FastAPI: https://fastapi.tiangolo.com/
+📌 Exemplos de uso
 
-Pydantic: https://docs.pydantic.dev/latest/
+Criar um Atleta
 
-SQLAlchemy: https://docs.sqlalchemy.org/en/20/
+{
+  "nome": "João Silva",
+  "cpf": "12345678900",
+  "idade": 25,
+  "peso": 75.5,
+  "altura": 1.80,
+  "sexo": "M",
+  "categoria": {
+    "nome": "Corrida"
+  },
+  "centro_treinamento": {
+    "nome": "CT Elite"
+  }
+}
 
-Alembic: https://alembic.sqlalchemy.org/en/latest/
 
-Fastapi-pagination: https://uriyyo-fastapi-pagination.netlify.app/
+---
+
+👨‍💻 Autor
+
+Desenvolvido por [Lucas] para o bootcamp da DIO.
+
+
+---
+
+👉 Agora é só você colar isso no arquivo README.md lá no GitHub e dar commit.
+
+Quer que eu te mostre exatamente onde clicar no GitHub para editar esse README (com setinha tipo tutorial passo a passo)?
+
