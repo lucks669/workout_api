@@ -50,28 +50,6 @@ A API estará disponível em: 👉 http://127.0.0.1:8000/docs
 
 ---
 
-📌 Exemplos de uso
-
-Criar um Atleta
-
-{
-  "nome": "João Silva",
-  "cpf": "12345678900",
-  "idade": 25,
-  "peso": 75.5,
-  "altura": 1.80,
-  "sexo": "M",
-  "categoria": {
-    "nome": "Corrida"
-  },
-  "centro_treinamento": {
-    "nome": "CT Elite"
-  }
-}
-
-
----
-
 👨‍💻 Autor
 
 Desenvolvido por [Lucas] para o bootcamp da DIO.
